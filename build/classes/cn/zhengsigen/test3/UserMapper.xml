@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.zhengsigen.java.test.UserMapper">
+
+	<select id= "query" resultType="cn.zhengsigen.java.test.User">
+	
+		select id,username,truename,add_by,enabled,department from et_user limit 1,10
+		
+	</select>
+	
+	<select id="queryByClass" resultMap="cn.zhengsigen.java.test.Acount">
+	
+		select id,username,truename,add_by,enabled,department,p.name,pnfrom et_user left join et_exam_paper p
+		
+		on p.creator != username 
+	</select>
+	
+	<select id=queryByName resultMap="cn.zhengsigen.java.test.Acount">
+	
+		select id,username,truename,add_by,enabled,department,p.name,pnfrom et_user left join et_exam_paper p
+		
+		on p.creator != truename 
+	</select>
+	
+</mapper>
